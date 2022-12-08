@@ -1,0 +1,70 @@
+
+  
+<!DOCTYPE html>
+<html>
+<head>
+
+  <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(to right, #605e7e, #6b73c1);
+}
+.check{
+  display: inline;
+}
+.item {
+  margin: auto;
+    width: 50%;
+    border-radius: 10px 0 0 10px;
+    display: grid;
+    align-content: center;
+    font-size: 20px;
+}
+.inputcol {
+    justify-content: center;
+    margin-top: 10px;
+}
+.buttoninput {
+    border-radius: 10px;
+    border-color: #333;
+    background-color: white;
+    font-size: 20px;
+}
+
+.buttoninput:hover {
+    background-color: #8f8acc;
+    color: white;
+}
+.container-title {
+    font-size: 25px;
+    text-align: center;
+    color: white;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="container-title">
+    <% itemsList.forEach((item) => { %>
+      <form action="/delete/<%= category %>" method="post">
+        <div class="item">
+          <input class="check" type="checkbox" name="checkbox" value=<%= item._id %> onChange="this.form.submit()">
+          <p name="item"><%= item.name %></p>
+        </div>
+      </form>
+    <% }) %>
+
+    <form class="item" action="/<%= category %>" method="post">
+      <input class="inputcol" type="text" name="newItem" placeholder="Add new item" autocomplete="off">
+      <button  type="submit" name="addButton" class="buttoninput" value=<%= category %>>+</button>
+    </form>
+  </div>
+</body>
+</html>
+    
